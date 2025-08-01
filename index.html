@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Ask SQL</title></head>
+<body>
+  <input type="text" id="question" placeholder="Ask about car sales" />
+  <button onclick="ask()">Ask Gemini</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function ask() {
+      const question = document.getElementById('question').value;
+
+      const res = await fetch('http://localhost:3000/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
