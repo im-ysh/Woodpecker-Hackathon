@@ -1,8 +1,8 @@
 
-
 import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors';  // Import cors at the top
+import cors from 'cors';
+  // Import cors at the top
 import { generateSQL } from './generateSQL.js';
 import { executeQuery } from './db.js';
 import { generateNaturalResponse } from './naturalResponse.js';
@@ -12,6 +12,8 @@ dotenv.config();
 
 // Then create express app
 const app = express();
+app.use(cors());
+
 const port = process.env.PORT || 3000;
 
 // Middleware setup
